@@ -21,19 +21,31 @@ import { Component } from '@angular/core';
     trigger('wildState', [
       state('normal', style({
         'background-color': 'red',
-        transform: 'translateX(0) scale(1)'
+        transform: 'translateX(0) scale(1)',
+        borderRadius: 0
       })),
       state('highlighted', style({
         backgroundColor: 'blue',
-        transform: 'translateX(100px) scale(1)'
+        transform: 'translateX(100px) scale(1)',
+        borderRadius: 0
       })),
       state('shrunken', style({
         backgroundColor: 'green',
-        transform: 'translateX(0) scale(0.5)'
+        transform: 'translateX(0) scale(0.5)',
+        borderRadius: 0
       })),
       transition('normal => highlighted', animate(300)),
       transition('highlighted => normal', animate(800)),
-      transition('shrunken <=> *', animate(500))
+      transition('shrunken <=> *', [
+        style({
+          backgroundColor: 'orange',
+          borderRadius: '0'
+        }),
+        animate(1000, style({
+          borderRadius: '50px'
+        })),
+        animate(500)
+      ])
     ])
   ]
 })

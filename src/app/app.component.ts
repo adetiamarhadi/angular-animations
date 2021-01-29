@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-animations';
+  list = ['Milk', 'Sugar', 'Bread'];
+
+    onAdd(item) {
+      this.list.push(item);
+    }
+
+    onDelete(item) {}
 }
